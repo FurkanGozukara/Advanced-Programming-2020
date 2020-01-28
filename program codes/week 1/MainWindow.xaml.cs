@@ -55,5 +55,15 @@ namespace week_1
                 listBoxRands.Items.Add($"{vrElement.irId}\t\t{vrElement.irRandNumber.ToString("N0")}");
             }
         }
+
+        private void BtnReadToDic_Click(object sender, RoutedEventArgs e)
+        {
+            readFromDic();
+        }
+
+        private void readFromDic()
+        {
+            staticVariables.readFromListBox(ref listBoxRands);
+        }
     }
 }

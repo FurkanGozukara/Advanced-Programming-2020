@@ -9,6 +9,7 @@
     <Grid>
         <Button Name="btnRandomFill" Content="random fill" HorizontalAlignment="Left" Margin="18,22,0,0" VerticalAlignment="Top" Width="119" Height="50" Click="BtnRandomFill_Click"/>
         <ListBox x:Name="listBoxRands" HorizontalAlignment="Left" Height="365" Margin="160,22,0,0" VerticalAlignment="Top" Width="475"/>
+        <Button Name="btnReadToDic" Content="read to dictionary" HorizontalAlignment="Left" Margin="660,22,0,0" VerticalAlignment="Top" Width="101" Height="50" Click="BtnReadToDic_Click"/>
 
     </Grid>
 </Window>

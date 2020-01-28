@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace public_variables
 {
-   
 
     public class randomNumbers
     {
