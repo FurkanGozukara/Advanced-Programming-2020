@@ -19,8 +19,13 @@ namespace week_1
             {
                 string srId = vrListBoxItem.ToString().Split('\t').First();
                 string srNumber = vrListBoxItem.ToString().Split('\t').Last();
+
+                if (dicGeneratedValues.ContainsKey(srId))
+                    dicGeneratedValues[srId] = srNumber;
+                else
+                    dicGeneratedValues.Add(srId, srNumber);
             }
         }
     }
-   
+
 }

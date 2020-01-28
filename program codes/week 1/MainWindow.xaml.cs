@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using public_variables;
+using System.IO;
 
 namespace week_1
 {
@@ -64,6 +65,22 @@ namespace week_1
         private void readFromDic()
         {
             staticVariables.readFromListBox(ref listBoxRands);
+        }
+
+        private void BtnWriteToFile_Click(object sender, RoutedEventArgs e)
+        {
+            //using dispose or close used resources after exited from scope {}
+            using (StreamWriter swWrite = new StreamWriter("dosya1.txt"))
+            {
+                swWrite.AutoFlush = true;
+                foreach (var vrPeritem in staticVariables.dicGeneratedValues)
+                {
+                    swWrite.WriteLine($"{vrPeritem.Key}\t\t{vrPeritem.Value}");
+                }
+            }
+
+            //
+            File.WriteAllLines("dosya2.txt", staticVariables.dicGeneratedValues.Select(pr => pr.Key + "\t\t" + pr.Value));
         }
     }
 }
