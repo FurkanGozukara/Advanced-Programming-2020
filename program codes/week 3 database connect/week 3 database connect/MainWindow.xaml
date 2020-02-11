@@ -13,7 +13,7 @@
         <TextBox Name="txtFirstName"  HorizontalAlignment="Left" Height="23" Margin="22,61,0,0" TextWrapping="Wrap" Text="type your first name" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtSurname"  HorizontalAlignment="Left" Height="23" Margin="156,62,0,0" TextWrapping="Wrap" Text="type your surname" VerticalAlignment="Top" Width="120"/>
         <ComboBox Name="cmbBoxUserRank" HorizontalAlignment="Left" Margin="300,62,0,0" VerticalAlignment="Top" Width="185"/>
-        <Button x:Name="btnRegister" Content="register" HorizontalAlignment="Left" Margin="512,62,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnRegister" Content="register" HorizontalAlignment="Left" Margin="512,62,0,0" VerticalAlignment="Top" Width="75" Click="btnRegister_Click"/>
 
     </Grid>
 </Window>

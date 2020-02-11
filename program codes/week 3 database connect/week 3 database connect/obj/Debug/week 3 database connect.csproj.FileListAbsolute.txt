@@ -1,0 +1,14 @@
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 3 database connect\week 3 database connect\bin\Debug\week 3 database connect.exe.config
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 3 database connect\week 3 database connect\bin\Debug\week 3 database connect.exe
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 3 database connect\week 3 database connect\bin\Debug\week 3 database connect.pdb
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 3 database connect\week 3 database connect\obj\Debug\week 3 database connect.csprojAssemblyReference.cache
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 3 database connect\week 3 database connect\obj\Debug\MainWindow.g.cs
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 3 database connect\week 3 database connect\obj\Debug\App.g.cs
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 3 database connect\week 3 database connect\obj\Debug\week 3 database connect_MarkupCompile.cache
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 3 database connect\week 3 database connect\obj\Debug\week 3 database connect_MarkupCompile.lref
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 3 database connect\week 3 database connect\obj\Debug\MainWindow.baml
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 3 database connect\week 3 database connect\obj\Debug\week 3 database connect.g.resources
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 3 database connect\week 3 database connect\obj\Debug\week_3_database_connect.Properties.Resources.resources
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 3 database connect\week 3 database connect\obj\Debug\week 3 database connect.csproj.GenerateResource.cache
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 3 database connect\week 3 database connect\obj\Debug\week 3 database connect.exe
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 3 database connect\week 3 database connect\obj\Debug\week 3 database connect.pdb
