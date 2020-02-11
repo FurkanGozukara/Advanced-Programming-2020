@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static week_3_database_connect.csDbConnection;
 
 namespace week_3_database_connect
 {
@@ -50,8 +51,7 @@ namespace week_3_database_connect
             public string srRankTitle { get; set; }
         }
 
-        private static string srConnectionString =
-            "server=localhost;database=okul;Integrated Security=SSPI;Connection Timeout=3000;";
+  
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
@@ -60,20 +60,16 @@ namespace week_3_database_connect
             string srUserHashedPassword = sha256(pwUserPassword.Password.ToString());
 
             string srQuery = $@"  insert into tblUsers (user_email,user_password,name,surname,user_rank)
-                values ('{txtEmail.Text}',
-                '{srUserHashedPassword}',
-                    '{txtFirstName.Text}',
-                '{txtSurname.Text}',
+                values (N'{txtEmail.Text.Replace("'","''")}',
+                N'{srUserHashedPassword}',
+                    N'{txtFirstName.Text.Replace("'", "''")}',
+                N'{txtSurname.Text.Replace("'", "''")}',
                 {irSelectedRank})";
 
+            inlineUpdateDeleteInsert(srQuery);
+
             //you have to either use using statement or explicity close sql connection
-            using (SqlConnection connection = new SqlConnection(srConnectionString))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(srQuery, connection);
-                var vrMsg = " rows affected " + command.ExecuteNonQuery();
-                MessageBox.Show(vrMsg);
-            }
+    
         }
 
         static string sha256(string randomString)
