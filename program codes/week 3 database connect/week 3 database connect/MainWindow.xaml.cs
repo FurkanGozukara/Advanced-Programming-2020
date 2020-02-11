@@ -57,24 +57,23 @@ namespace week_3_database_connect
         {
             int irSelectedRank = (int) cmbBoxUserRank.SelectedValue;
 
-            //string srUserHashedPassword = sha256(pwUserPassword.Password.ToString());
+            string srUserHashedPassword = sha256(pwUserPassword.Password.ToString());
 
+            string srQuery = $@"  insert into tblUsers (user_email,user_password,name,surname,user_rank)
+                values ('{txtEmail.Text}',
+                '{srUserHashedPassword}',
+                    '{txtFirstName.Text}',
+                '{txtSurname.Text}',
+                {irSelectedRank})";
 
-
-            //string srQuery=$@"  insert into tblUsers (user_email,user_password,name,surname,user_rank)
-            //    values ('{txtEmail.Text}',
-            //    '{srUserHashedPassword}',
-            //        '{txtFirstName.Text}',
-            //    '{txtSurname.Text}',
-            //    )"
-
-            ////you have to either use using statement or explicity close sql connection
-            //using (SqlConnection connection = new SqlConnection(srConnectionString))
-            //{
-            //    connection.Open();
-            //    SqlCommand command = new SqlCommand(srQuery, connection);
-            //    Message = " rows affected " + command.ExecuteNonQuery();
-            //}
+            //you have to either use using statement or explicity close sql connection
+            using (SqlConnection connection = new SqlConnection(srConnectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(srQuery, connection);
+                var vrMsg = " rows affected " + command.ExecuteNonQuery();
+                MessageBox.Show(vrMsg);
+            }
         }
 
         static string sha256(string randomString)
