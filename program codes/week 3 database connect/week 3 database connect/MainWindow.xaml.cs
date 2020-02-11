@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -68,6 +69,8 @@ namespace week_3_database_connect
 
             inlineUpdateDeleteInsert(srQuery);
 
+            // inlineUpdateDeleteInsert("select * from ggg");
+
             //you have to either use using statement or explicity close sql connection
     
         }
@@ -82,6 +85,15 @@ namespace week_3_database_connect
                 hash.Append(theByte.ToString("x2"));
             }
             return hash.ToString();
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            DataSet dsResult = csDbConnection.inlineSelectDataSet("select * from tblUsers; select * from tblUsers2;");
+
+            dgUsers.ItemsSource = dsResult.Tables[0].DefaultView;
+
+            dgUsers2.ItemsSource = dsResult.Tables[1].DefaultView;
         }
     }
 }

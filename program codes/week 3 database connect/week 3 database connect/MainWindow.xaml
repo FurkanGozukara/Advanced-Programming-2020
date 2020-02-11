@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:week_3_database_connect"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="525.42" Width="808.8">
     <Grid>
         <TextBox Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="22,20,0,0" TextWrapping="Wrap" Text="type email" VerticalAlignment="Top" Width="120"/>
         <PasswordBox Name="pwUserPassword" HorizontalAlignment="Left" Margin="337,20,0,0" VerticalAlignment="Top" Height="23" Width="138"/>
@@ -14,6 +14,9 @@
         <TextBox x:Name="txtSurname"  HorizontalAlignment="Left" Height="23" Margin="156,62,0,0" TextWrapping="Wrap" Text="type your surname" VerticalAlignment="Top" Width="120"/>
         <ComboBox Name="cmbBoxUserRank" HorizontalAlignment="Left" Margin="300,62,0,0" VerticalAlignment="Top" Width="185"/>
         <Button x:Name="btnRegister" Content="register" HorizontalAlignment="Left" Margin="512,62,0,0" VerticalAlignment="Top" Width="75" Click="btnRegister_Click"/>
+        <DataGrid Name="dgUsers" HorizontalAlignment="Left" Height="136" Margin="22,151,0,0" VerticalAlignment="Top" Width="692"/>
+        <Button x:Name="btnRefresh" Content="refresh" HorizontalAlignment="Left" Margin="512,109,0,0" VerticalAlignment="Top" Width="137" Height="37" Click="btnRefresh_Click"/>
+        <DataGrid x:Name="dgUsers2" HorizontalAlignment="Left" Height="136" Margin="22,318,0,0" VerticalAlignment="Top" Width="692"/>
 
     </Grid>
 </Window>
