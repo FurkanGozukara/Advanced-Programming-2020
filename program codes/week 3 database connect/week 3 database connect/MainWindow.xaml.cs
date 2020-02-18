@@ -102,14 +102,7 @@ namespace week_3_database_connect
 
         private void btntest_Click(object sender, RoutedEventArgs e)
         {
-            DataSet changes = dsResult.GetChanges();
-            if (changes != null)
-            {
-                //Data has changes. 
-                //use update method in the adapter. it should update your datasource
-                int updatedRows = myOleDBDataAdapter.Update(changes);
-                dsResult.AcceptChanges();
-            }
+           
         }
     }
 }

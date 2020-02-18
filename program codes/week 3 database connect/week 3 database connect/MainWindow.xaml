@@ -17,7 +17,7 @@
         <DataGrid Name="dgUsers" HorizontalAlignment="Left" Height="136" Margin="22,151,0,0" VerticalAlignment="Top" Width="692"/>
         <Button x:Name="btnRefresh" Content="refresh" HorizontalAlignment="Left" Margin="512,109,0,0" VerticalAlignment="Top" Width="137" Height="37" Click="btnRefresh_Click"/>
         <DataGrid x:Name="dgUsers2" HorizontalAlignment="Left" Height="136" Margin="22,318,0,0" VerticalAlignment="Top" Width="692"/>
-        <Button x:Name="btntest" Content="test" HorizontalAlignment="Left" Margin="362,109,0,0" VerticalAlignment="Top" Width="113" Height="37" Click="btntest_Click"/>
+        <Button x:Name="btnsave" Content="save" HorizontalAlignment="Left" Margin="362,109,0,0" VerticalAlignment="Top" Width="113" Height="37" Click="btntest_Click"/>
 
     </Grid>
 </Window>
