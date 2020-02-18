@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -87,6 +88,8 @@ namespace week_3_database_connect
             return hash.ToString();
         }
 
+        OleDbDataAdapter myOleDBDataAdapter=new OleDbDataAdapter();
+        DataSet dsResult;
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
             DataSet dsResult = csDbConnection.inlineSelectDataSet("select * from tblUsers; select * from tblUsers2;");
@@ -94,6 +97,19 @@ namespace week_3_database_connect
             dgUsers.ItemsSource = dsResult.Tables[0].DefaultView;
 
             dgUsers2.ItemsSource = dsResult.Tables[1].DefaultView;
+
+        }
+
+        private void btntest_Click(object sender, RoutedEventArgs e)
+        {
+            DataSet changes = dsResult.GetChanges();
+            if (changes != null)
+            {
+                //Data has changes. 
+                //use update method in the adapter. it should update your datasource
+                int updatedRows = myOleDBDataAdapter.Update(changes);
+                dsResult.AcceptChanges();
+            }
         }
     }
 }

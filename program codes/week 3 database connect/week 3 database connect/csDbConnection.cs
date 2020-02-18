@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Data.OleDb;
 
 namespace week_3_database_connect
 {
@@ -15,6 +16,8 @@ namespace week_3_database_connect
         //run this query to get server full path : select @@SERVERNAME
         private static string srConnectionString =
       "server=localhost;database=okul;Integrated Security=SSPI;Connection Timeout=3000;";
+
+        public static string srOldDBCon = "Provider=SQLOLEDB;Data Source=(localhost);database=okul;Integrated Security=SSPI";
 
         public static int inlineUpdateDeleteInsert(string srQuery)
         {
