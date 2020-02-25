@@ -1,0 +1,14 @@
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 5\week 5\bin\Debug\week 5.exe.config
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 5\week 5\bin\Debug\week 5.exe
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 5\week 5\bin\Debug\week 5.pdb
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 5\week 5\obj\Debug\week 5.csprojAssemblyReference.cache
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 5\week 5\obj\Debug\MainWindow.g.cs
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 5\week 5\obj\Debug\App.g.cs
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 5\week 5\obj\Debug\week 5_MarkupCompile.cache
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 5\week 5\obj\Debug\week 5_MarkupCompile.lref
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 5\week 5\obj\Debug\MainWindow.baml
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 5\week 5\obj\Debug\week 5.g.resources
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 5\week 5\obj\Debug\week_5.Properties.Resources.resources
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 5\week 5\obj\Debug\week 5.csproj.GenerateResource.cache
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 5\week 5\obj\Debug\week 5.exe
+C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 5\week 5\obj\Debug\week 5.pdb

@@ -73,6 +73,7 @@ namespace week_4
 
             myClassOleDb.ole_Db_Adaptor.UpdateCommand = myClassOleDb.ole_DB_Builder.GetUpdateCommand();
             myClassOleDb.ole_Db_Adaptor.Update(myClassOleDb.ds_Ole_DB_Data_Set);
+            myClassOleDb.ds_Ole_DB_Data_Set.AcceptChanges();
         }
 
         static string sha256(string randomString)
