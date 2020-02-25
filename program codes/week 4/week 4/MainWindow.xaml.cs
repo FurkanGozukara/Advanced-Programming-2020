@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,8 +50,41 @@ namespace week_4
 
         private void btnSaveWithclass_Click(object sender, RoutedEventArgs e)
         {
+            foreach (DataTable dt in myClassOleDb.ds_Ole_DB_Data_Set.Tables)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    for (int irColumnNo = 0; irColumnNo < dt.Columns.Count; irColumnNo++)
+                    {
+                        var vrCurrent = row[irColumnNo, DataRowVersion.Current];
+                        var vrOrg = row[irColumnNo, DataRowVersion.Original];
+                        if (!vrCurrent.Equals(vrOrg))
+                        {
+                            if(dt.Columns[irColumnNo].ToString()=="user_password")
+                            {
+                                var vrPassword = row["user_password"].ToString().Trim();
+                                var vrHashedPassword = sha256(vrPassword);
+                                row["user_password"] = vrHashedPassword;
+                            }
+                        }
+                    }
+                }
+            }
+
             myClassOleDb.ole_Db_Adaptor.UpdateCommand = myClassOleDb.ole_DB_Builder.GetUpdateCommand();
             myClassOleDb.ole_Db_Adaptor.Update(myClassOleDb.ds_Ole_DB_Data_Set);
+        }
+
+        static string sha256(string randomString)
+        {
+            var crypt = new System.Security.Cryptography.SHA256Managed();
+            var hash = new System.Text.StringBuilder();
+            byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(randomString));
+            foreach (byte theByte in crypto)
+            {
+                hash.Append(theByte.ToString("x2"));
+            }
+            return hash.ToString();
         }
     }
 }
