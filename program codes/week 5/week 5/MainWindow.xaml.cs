@@ -99,23 +99,27 @@ namespace week_5
 
             string commandText = "select name,surname,user_rank from tblUsers where user_email=@user_email and user_password=@user_password";
 
-            DataTable dtResult = new DataTable();
+            DataTable dtResult = csDbConnection.Parameterized_Select(commandText,
+                new List<Tuple<string, object>> {
+                new Tuple<string, object>("@user_email", txtUserEmail.Text),
+                new Tuple<string, object>("@user_password",vrEnteredPassword)
+                });
 
-            using (SqlConnection connection = new SqlConnection(csDbConnection.srConnectionString))
-            {
-                SqlCommand command = new SqlCommand(commandText, connection);
-                command.Parameters.AddWithValue("@user_email", txtUserEmail.Text);
-                command.Parameters.AddWithValue("@user_password", vrEnteredPassword);
-                try
-                {
-                    connection.Open();
-                    dtResult.Load(command.ExecuteReader());
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine(ex.Message);
-                }
-            }
+            //using (SqlConnection connection = new SqlConnection(csDbConnection.srConnectionString))
+            //{
+            //    SqlCommand command = new SqlCommand(commandText, connection);
+            //    command.Parameters.AddWithValue("@user_email", txtUserEmail.Text);
+            //    command.Parameters.AddWithValue("@user_password", vrEnteredPassword);
+            //    try
+            //    {
+            //        connection.Open();
+            //        dtResult.Load(command.ExecuteReader());
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        System.Diagnostics.Debug.WriteLine(ex.Message);
+            //    }
+            //}
 
             if(dtResult.Rows.Count==0)
             {

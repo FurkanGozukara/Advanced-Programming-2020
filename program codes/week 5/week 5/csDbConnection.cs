@@ -89,5 +89,33 @@ using System.Data.OleDb;
 
         return new csOleDbVariables { ds_Ole_DB_Data_Set= data_set_local, ole_Db_Adaptor= ole_db_adapter,  ole_DB_Builder= ole_db_command_mybuilder };
     }
+
+    public static DataTable Parameterized_Select(string srQuery,
+        List<Tuple<string,object>> lstParameters)
+    {
+        DataTable dtResult = new DataTable();
+
+        using (SqlConnection connection = new SqlConnection(csDbConnection.srConnectionString))
+        {
+            SqlCommand command = new SqlCommand(srQuery, connection);
+
+            foreach (var vrParamCouple in lstParameters)
+            {
+                command.Parameters.AddWithValue(vrParamCouple.Item1, vrParamCouple.Item2);
+            }
+
+            try
+            {
+                connection.Open();
+                dtResult.Load(command.ExecuteReader());
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+
+            return dtResult;
+        }
+    }
 }
 
