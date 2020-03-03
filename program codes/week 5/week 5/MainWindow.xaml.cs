@@ -27,6 +27,10 @@ namespace week_5
         {
             InitializeComponent();
 
+            tabStudents.IsEnabled = false;
+            tabTeachers.IsEnabled = false;
+            tabAdmin.IsEnabled = false;
+
             initVariables();
         }
 
@@ -143,7 +147,33 @@ namespace week_5
             if(LoggedUserInfo!=null)
             {
                 lblInfo.Content = $"Logged User: {LoggedUserInfo.srUserFirstName} {LoggedUserInfo.srUserSurname} - Rank: {LoggedUserInfo.UserRankInfo.srRankTitle}";
+                tabLogin.IsEnabled = false;
+                switch (LoggedUserInfo.UserRankInfo.irRank)
+                {
+                    case 1:
+                        tabAdmin.IsEnabled = true;
+                        tabAdmin.IsSelected = true;
+                        break;
+                    case 2:
+                        tabTeachers.IsEnabled = true;
+                        tabTeachers.IsSelected = true;
+                        break;
+                    case 3:
+                        tabStudents.IsEnabled = true;
+                        tabStudents.IsSelected = true;
+                        break;
+                }
             }
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            LoggedUserInfo = null;
+            tabStudents.IsEnabled = false;
+            tabAdmin.IsEnabled = false;
+            tabTeachers.IsEnabled = false;
+            tabLogin.IsEnabled = true;
+            tabLogin.IsSelected = true;
         }
     }
 }

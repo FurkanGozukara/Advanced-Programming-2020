@@ -7,11 +7,43 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox Name="txtUserEmail" HorizontalAlignment="Left" Height="59" Margin="18,28,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="184" GotFocus="txtUserEmail_GotFocus" LostFocus="txtUserEmail_LostFocus"/>
-        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="257,50,0,0" VerticalAlignment="Top" Height="37" Width="148"/>
-        <Label Content="enter your password below" HorizontalAlignment="Left" Margin="251,19,0,0" VerticalAlignment="Top"/>
-        <Button Name="btnLogin" Content="login" HorizontalAlignment="Left" Margin="439,30,0,0" VerticalAlignment="Top" Width="89" Height="57" Click="btnLogin_Click"/>
-        <Label Name="lblInfo" Content="not logged in" HorizontalAlignment="Left" Margin="298,-1,0,0" VerticalAlignment="Top" Width="436"/>
+
+        <TabControl   HorizontalAlignment="Left" Height="400" Margin="19,10,0,0" VerticalAlignment="Top" Width="745">
+           
+            <TabItem Header="tab login" Name="tabLogin">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="39*"/>
+                        <ColumnDefinition Width="172*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Name="txtUserEmail" HorizontalAlignment="Left" Height="59" Margin="18,28,0,-15" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="184" GotFocus="txtUserEmail_GotFocus" LostFocus="txtUserEmail_LostFocus" Grid.ColumnSpan="2"/>
+                    <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="139.8,50,0,-15" VerticalAlignment="Top" Height="37" Width="148" Grid.Column="1"/>
+                    <Label Content="enter your password below" HorizontalAlignment="Left" Margin="133.8,19,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Button Name="btnLogin" Content="login" HorizontalAlignment="Left" Margin="321.8,30,0,-15" VerticalAlignment="Top" Width="89" Height="57" Click="btnLogin_Click" Grid.Column="1"/>
+                    <Label Name="lblInfo" Content="not logged in" HorizontalAlignment="Left" Margin="180.8,-1,-101.2,0" VerticalAlignment="Top" Width="436" Grid.Column="1"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="tab students" Name="tabStudents">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="tab teachers" Name="tabTeachers">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="tab admin" Name="tabAdmin">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Template>
+                    <ControlTemplate>
+                        <Button x:Name="btnLogout" Click="btnLogout_Click">Logout</Button>
+                    </ControlTemplate>
+                </TabItem.Template>
+            </TabItem>
+
+        </TabControl>
 
     </Grid>
 </Window>
