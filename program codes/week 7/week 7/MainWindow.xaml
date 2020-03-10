@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:week_7"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="555.6" Width="1505.6">
     <Grid>
         <TextBox x:Name="txtSearchBox" HorizontalAlignment="Left" Height="23" Margin="10,16,0,0" TextWrapping="Wrap" Text="enter production product search name" VerticalAlignment="Top" Width="255"/>
         <Button x:Name="btnSearch" Content="search" HorizontalAlignment="Left" Margin="281,16,0,0" VerticalAlignment="Top" Width="75" Click="btnSearch_Click"/>
-        <DataGrid x:Name="dtgrid1" HorizontalAlignment="Left" Height="104" Margin="10,50,0,0" VerticalAlignment="Top" Width="448"/>
-        <DataGrid HorizontalAlignment="Left" Height="100" Margin="10,169,0,0" VerticalAlignment="Top" Width="496"/>
+        <DataGrid x:Name="dtgrid1" HorizontalAlignment="Left" Height="191" Margin="10,50,0,0" VerticalAlignment="Top" Width="1479" SelectionChanged="dtgrid1_SelectionChanged"/>
+        <DataGrid x:Name="dtGrid2" HorizontalAlignment="Left" Height="100" Margin="10,270,0,0" VerticalAlignment="Top" Width="1479" />
 
     </Grid>
 </Window>

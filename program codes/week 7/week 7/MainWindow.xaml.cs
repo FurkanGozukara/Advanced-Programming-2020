@@ -44,5 +44,35 @@ namespace week_7
 
             dtgrid1.ItemsSource = dtResults.DefaultView;
         }
+
+        private void dtgrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string srSelectedId = "-1";
+            try
+            {
+                var vr1 = dtgrid1.SelectedItem;
+                var vr2 = dtgrid1.SelectedItems;
+
+                System.Data.DataRowView vRow = (System.Data.DataRowView)vr1;
+                srSelectedId = vRow.Row.ItemArray.FirstOrDefault().ToString();
+            }
+            catch 
+            {
+                return;
+            }
+
+
+         string srQuery = @"select *
+	  from [Production].[Product]
+	 where ProductID=@productid";
+
+            DataTable dtResults = csDbConnection.Parameterized_Select(srQuery,
+                new List<Tuple<string, object>>
+                {
+                   new Tuple<string, object>("@productid",srSelectedId)
+                });
+
+            dtGrid2.ItemsSource = dtResults.DefaultView;
+        }
     }
 }
