@@ -45,6 +45,7 @@ namespace week_7
             dtgrid1.ItemsSource = dtResults.DefaultView;
         }
 
+        //home work, make it show when multiple rows selected
         private void dtgrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string srSelectedId = "-1";
