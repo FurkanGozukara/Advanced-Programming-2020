@@ -17,7 +17,7 @@ using System.Data.OleDb;
      // "server=localhost;database=okul;Integrated Security=SSPI;Connection Timeout=3000;";
 
     public static string srConnectionString =
-"server=localhost;database=work;Integrated Security=SSPI;Connection Timeout=3000;";
+@"server=DESKTOP-ULH4M26;database=work;Integrated Security=SSPI;Connection Timeout=3000;";
 
     //to find out data source execute select @@servername
     //data source is host name and initial catalog is database name

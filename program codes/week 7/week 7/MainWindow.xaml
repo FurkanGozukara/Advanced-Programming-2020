@@ -11,6 +11,7 @@
         <Button x:Name="btnSearch" Content="search" HorizontalAlignment="Left" Margin="281,16,0,0" VerticalAlignment="Top" Width="75" Click="btnSearch_Click"/>
         <DataGrid x:Name="dtgrid1" HorizontalAlignment="Left" Height="191" Margin="10,50,0,0" VerticalAlignment="Top" Width="1479" SelectionChanged="dtgrid1_SelectionChanged"/>
         <DataGrid x:Name="dtGrid2" HorizontalAlignment="Left" Height="100" Margin="10,270,0,0" VerticalAlignment="Top" Width="1479" />
+        <Button Content="open sorting window" Name="btnOpenSorting" HorizontalAlignment="Left" Margin="420,15,0,0" VerticalAlignment="Top" Width="133" Click="btnOpenSorting_Click"/>
 
     </Grid>
 </Window>

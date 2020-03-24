@@ -57,13 +57,13 @@ namespace week_7
                 System.Data.DataRowView vRow = (System.Data.DataRowView)vr1;
                 srSelectedId = vRow.Row.ItemArray.FirstOrDefault().ToString();
             }
-            catch 
+            catch
             {
                 return;
             }
 
 
-         string srQuery = @"select *
+            string srQuery = @"select *
 	  from [Production].[Product]
 	 where ProductID=@productid";
 
@@ -74,6 +74,14 @@ namespace week_7
                 });
 
             dtGrid2.ItemsSource = dtResults.DefaultView;
+        }
+
+
+
+        private void btnOpenSorting_Click(object sender, RoutedEventArgs e)
+        {
+            SortingExample win2 = new SortingExample();
+            win2.Show();
         }
     }
 }

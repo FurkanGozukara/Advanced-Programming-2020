@@ -12,3 +12,19 @@ C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 7\w
 C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 7\week 7\obj\Debug\week 7.csproj.GenerateResource.cache
 C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 7\week 7\obj\Debug\week 7.exe
 C:\Users\Furkan Gözükara\Desktop\ileri programlama 2020\program codes\week 7\week 7\obj\Debug\week 7.pdb
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\bin\Debug\week 7.exe.config
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\bin\Debug\week 7.exe
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\bin\Debug\week 7.pdb
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\obj\Debug\week 7.csprojAssemblyReference.cache
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\obj\Debug\MainWindow.g.cs
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\obj\Debug\App.g.cs
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\obj\Debug\week 7_MarkupCompile.cache
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\obj\Debug\week 7_MarkupCompile.lref
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\obj\Debug\MainWindow.baml
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\obj\Debug\week 7.g.resources
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\obj\Debug\week_7.Properties.Resources.resources
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\obj\Debug\week 7.csproj.GenerateResource.cache
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\obj\Debug\week 7.exe
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\obj\Debug\week 7.pdb
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\obj\Debug\SortingExample.g.cs
+C:\temp2\Advanced-Programming-2020\program codes\week 7\week 7\obj\Debug\SortingExample.baml

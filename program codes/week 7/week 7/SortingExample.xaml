@@ -1,0 +1,17 @@
+﻿<Window x:Class="week_7.SortingExample"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:week_7"
+        mc:Ignorable="d"
+        Title="SortingExample" Height="450" Width="800">
+    <Grid>
+        <DataGrid Name="dtGridPersons" HorizontalAlignment="Left" Height="275" Margin="10,94,0,0" VerticalAlignment="Top" Width="754"/>
+        <Button Content="refresh the table" Name="btnRefresh" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="122" Click="btnRefresh_Click"/>
+        <ComboBox Name="cBoxFirstSorting" HorizontalAlignment="Left" Margin="153,10,0,0" VerticalAlignment="Top" Width="396"/>
+        <ComboBox  Name="cBoxPersonTypeFiltering" HorizontalAlignment="Left" Margin="153,47,0,0" VerticalAlignment="Top" Width="396"/>
+        <Button Content="safe refresh the table" x:Name="safeRefresh" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="122" Click="safeRefresh_Click"  />
+
+    </Grid>
+</Window>
