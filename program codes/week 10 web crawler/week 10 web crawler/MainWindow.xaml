@@ -1,0 +1,20 @@
+﻿<Window x:Class="week_10_web_crawler.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:week_10_web_crawler"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Name="btnSingleUrlCrawl" Content="crawl single url" HorizontalAlignment="Left" Margin="425,84,0,0" VerticalAlignment="Top" Width="116" Click="btnSingleUrlCrawl_Click"/>
+        <TextBox  Name="txtUrl"  HorizontalAlignment="Left" Height="23" Margin="10,11,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="409"/>
+        <TextBox Name="txtSourceCode" HorizontalAlignment="Left" Height="132" Margin="10,48,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="409"/>
+        <Button x:Name="btnTaskBasedCrawl" Content="task based single url crawl" HorizontalAlignment="Left" Margin="559,84,0,0" VerticalAlignment="Top" Width="162" Click="btnTaskBasedCrawl_Click"/>
+        <Button x:Name="btnTimerStart" Content="start timer" HorizontalAlignment="Left" Margin="435,11,0,0" VerticalAlignment="Top" Width="116" Click="btnTimerStart_Click"/>
+        <Label Name="lblTimer" Content="Label" HorizontalAlignment="Left" Margin="559,5,0,0" VerticalAlignment="Top" Width="225"/>
+        <Button Name="threadCountTest" Content="thread count test long running" HorizontalAlignment="Left" Margin="425,128,0,0" VerticalAlignment="Top" Width="222" Click="threadCountTest_Click"/>
+        <Button x:Name="threadCountTest_Copy" Content="thread count test default" HorizontalAlignment="Left" Margin="425,161,0,0" VerticalAlignment="Top" Width="222" Click="threadCountTestDefault_Click"/>
+
+    </Grid>
+</Window>

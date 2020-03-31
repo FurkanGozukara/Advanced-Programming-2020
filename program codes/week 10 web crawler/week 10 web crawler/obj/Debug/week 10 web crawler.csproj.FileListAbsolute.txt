@@ -1,0 +1,14 @@
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\bin\Debug\week 10 web crawler.exe.config
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\bin\Debug\week 10 web crawler.exe
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\bin\Debug\week 10 web crawler.pdb
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\obj\Debug\week 10 web crawler.csprojAssemblyReference.cache
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\obj\Debug\MainWindow.g.cs
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\obj\Debug\App.g.cs
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\obj\Debug\week 10 web crawler_MarkupCompile.cache
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\obj\Debug\week 10 web crawler_MarkupCompile.lref
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\obj\Debug\MainWindow.baml
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\obj\Debug\week 10 web crawler.g.resources
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\obj\Debug\week_10_web_crawler.Properties.Resources.resources
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\obj\Debug\week 10 web crawler.csproj.GenerateResource.cache
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\obj\Debug\week 10 web crawler.exe
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\obj\Debug\week 10 web crawler.pdb
