@@ -38,7 +38,7 @@ namespace week_10_web_crawler
 
         private void doSingleCrawl(string urlAddress)
         {
-            //  System.Threading.Thread.Sleep(10 * 1000);
+           System.Threading.Thread.Sleep(10 * 1000);
 
             var vrResult = page_fetcher.fetch_a_page(urlAddress);
 
