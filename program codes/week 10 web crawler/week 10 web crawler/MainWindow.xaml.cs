@@ -16,6 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using static week_10_web_crawler.cs_public_functions;
+using static week_10_web_crawler.cs_Global_Variables;
 
 namespace week_10_web_crawler
 {
@@ -29,6 +31,7 @@ namespace week_10_web_crawler
             InitializeComponent();
             ThreadPool.SetMaxThreads(100000, 100000);
             ThreadPool.SetMinThreads(100000, 100000);
+            cs_public_functions.refMainWindow = this;
         }
 
         private void btnSingleUrlCrawl_Click(object sender, RoutedEventArgs e)
@@ -38,7 +41,7 @@ namespace week_10_web_crawler
 
         private void doSingleCrawl(string urlAddress)
         {
-           System.Threading.Thread.Sleep(10 * 1000);
+            //System.Threading.Thread.Sleep(10 * 1000);
 
             var vrResult = page_fetcher.fetch_a_page(urlAddress);
 
@@ -46,7 +49,7 @@ namespace week_10_web_crawler
             {
                 MessageBox.Show((int)vrResult.fetchStatusCode + "\n" + vrResult.fetchStatusCode.ToString() +
                     "\n" +
-                    vrResult.fetchStatusDescription+"\n"+
+                    vrResult.fetchStatusDescription + "\n" +
                     vrResult.exceptionE.Message);
                 return;
             }
@@ -78,7 +81,7 @@ namespace week_10_web_crawler
             string srUrl = txtUrl.Text;
             Task vrStartedTask = Task.Factory.StartNew(() => { doSingleCrawl(srUrl); }).ContinueWith(task =>
             {
-                MessageBox.Show("task has finished: " + task.Status+" "+DateTime.Now);
+                MessageBox.Show("task has finished: " + task.Status + " " + DateTime.Now);
             });
             // vrStartedTask.Wait();
             MessageBox.Show("task started but not finished yet: " + vrStartedTask.Status + " " + DateTime.Now);
@@ -104,5 +107,60 @@ namespace week_10_web_crawler
         {
             System.Threading.Thread.Sleep(100 * 1000);
         }
+
+        DispatcherTimer dispatchherCrawling = new DispatcherTimer();
+
+        private void btnStartMainCrawling_Click(object sender, RoutedEventArgs e)
+        {
+            cs_public_functions.loadCrawlingDictionary();
+
+            dispatchherCrawling.Tick += new EventHandler(doMainCrawling);
+            dispatchherCrawling.Interval = new TimeSpan(0, 0, 0, 0, 500);
+            dispatchherCrawling.Start();
+        }
+
+        private void doMainCrawling(object sender, EventArgs e)
+        {
+            if (!checkCrawlingCanBeStarted())
+            {
+                return;
+            }
+
+
+
+            string srNewUrl = null;
+
+            lock (hsNewUrls)
+            {
+                if (hsNewUrls.Count == 0)
+                {
+                    lock (hsCurrentlyCrawlingUrl)
+                        if (hsCurrentlyCrawlingUrl.Count == 0)
+                        {
+                            dispatchherCrawling.Stop();
+                            saveCrawlingDictionary();
+                            MessageBox.Show("crawling completed");
+                            return;
+                        }
+                }
+
+                foreach (var vrNewUrl in hsNewUrls)
+                {
+                    if (hsCurrentlyCrawlingUrl.Contains(vrNewUrl))
+                        continue;
+                    srNewUrl = vrNewUrl;
+                    break;
+                }
+
+                if (string.IsNullOrEmpty(srNewUrl))
+                    return;
+
+                hsNewUrls.Remove(srNewUrl);
+
+                cs_public_functions.crawlURL(srNewUrl);
+            }
+        }
+
+
     }
 }

@@ -1,0 +1,14 @@
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 11 lock example\week 11 lock example\bin\Debug\week 11 lock example.exe.config
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 11 lock example\week 11 lock example\bin\Debug\week 11 lock example.exe
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 11 lock example\week 11 lock example\bin\Debug\week 11 lock example.pdb
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 11 lock example\week 11 lock example\obj\Debug\week 11 lock example.csprojAssemblyReference.cache
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 11 lock example\week 11 lock example\obj\Debug\MainWindow.g.cs
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 11 lock example\week 11 lock example\obj\Debug\App.g.cs
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 11 lock example\week 11 lock example\obj\Debug\week 11 lock example_MarkupCompile.cache
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 11 lock example\week 11 lock example\obj\Debug\week 11 lock example_MarkupCompile.lref
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 11 lock example\week 11 lock example\obj\Debug\MainWindow.baml
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 11 lock example\week 11 lock example\obj\Debug\week 11 lock example.g.resources
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 11 lock example\week 11 lock example\obj\Debug\week_11_lock_example.Properties.Resources.resources
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 11 lock example\week 11 lock example\obj\Debug\week 11 lock example.csproj.GenerateResource.cache
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 11 lock example\week 11 lock example\obj\Debug\week 11 lock example.exe
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 11 lock example\week 11 lock example\obj\Debug\week 11 lock example.pdb

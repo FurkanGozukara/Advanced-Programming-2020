@@ -1,0 +1,15 @@
+﻿<Window x:Class="week_11_lock_example.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:week_11_lock_example"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="no lock sync" Name="btnNoLockSync" HorizontalAlignment="Left" Margin="53,68,0,0" VerticalAlignment="Top" Width="162" Height="57" Click="btnNoLockSync_Click"/>
+        <Button Content="sync add" Name="btnSync" HorizontalAlignment="Left" Margin="265,68,0,0" VerticalAlignment="Top" Width="108" Height="57" Click="btnSync_Click"/>
+        <Label Name="lblSpeed" Content="Label" HorizontalAlignment="Left" Margin="149,163,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

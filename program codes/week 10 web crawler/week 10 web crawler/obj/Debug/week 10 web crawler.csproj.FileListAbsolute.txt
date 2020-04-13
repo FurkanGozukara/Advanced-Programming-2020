@@ -12,3 +12,9 @@ C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 
 C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\obj\Debug\week 10 web crawler.csproj.GenerateResource.cache
 C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\obj\Debug\week 10 web crawler.exe
 C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\obj\Debug\week 10 web crawler.pdb
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Furkan Gözükara\Desktop\advanced programming 2020\program codes\week 10 web crawler\week 10 web crawler\obj\Debug\week 10 web crawler.csproj.CopyComplete

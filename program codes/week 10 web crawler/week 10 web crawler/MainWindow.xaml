@@ -15,6 +15,8 @@
         <Label Name="lblTimer" Content="Label" HorizontalAlignment="Left" Margin="559,5,0,0" VerticalAlignment="Top" Width="225"/>
         <Button Name="threadCountTest" Content="thread count test long running" HorizontalAlignment="Left" Margin="425,128,0,0" VerticalAlignment="Top" Width="222" Click="threadCountTest_Click"/>
         <Button x:Name="threadCountTest_Copy" Content="thread count test default" HorizontalAlignment="Left" Margin="425,161,0,0" VerticalAlignment="Top" Width="222" Click="threadCountTestDefault_Click"/>
+        <Button Name="btnStartMainCrawling" Content="start main crawling" HorizontalAlignment="Left" Margin="425,203,0,0" VerticalAlignment="Top" Width="156" Height="67" Click="btnStartMainCrawling_Click"/>
+        <ListBox x:Name="lstStatusBox" HorizontalAlignment="Left" Height="207" Margin="10,203,0,0" VerticalAlignment="Top" Width="409"/>
 
     </Grid>
 </Window>
