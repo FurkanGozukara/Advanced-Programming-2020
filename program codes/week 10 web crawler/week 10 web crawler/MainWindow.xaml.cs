@@ -126,8 +126,6 @@ namespace week_10_web_crawler
                 return;
             }
 
-
-
             string srNewUrl = null;
 
             lock (hsNewUrls)
@@ -161,6 +159,14 @@ namespace week_10_web_crawler
             }
         }
 
-
+        private void btnStopCrawling_Click(object sender, RoutedEventArgs e)
+        {
+            blCrawlingStopped = true;
+            lock(hsCrawledUrls)
+            {
+                hsNewUrls = new HashSet<string>();
+            }
+            cs_public_functions.updateListStatusBox("software stop command is set please wait");
+        }
     }
 }
