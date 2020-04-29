@@ -40,8 +40,6 @@ namespace week_10_web_crawler
                         temp_cs_fetch_result.srFetchSource = readStream.ReadToEnd();
 
                         temp_cs_fetch_result.fetchStatusCode = response.StatusCode;
-
-                        readStream.Close();
                     }
                 }
             }

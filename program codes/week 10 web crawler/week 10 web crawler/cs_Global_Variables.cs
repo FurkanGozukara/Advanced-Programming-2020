@@ -9,6 +9,7 @@ namespace week_10_web_crawler
     public static class cs_Global_Variables
     {
         public static int irMax_Concurrent_Task_Count = 20;
+        public static int irPerThreadStartMiliSeconds = 100;
         public static int irMaxRetryCount = 3;
         public static int irMaxWaitHours = 24;
 
@@ -19,5 +20,7 @@ namespace week_10_web_crawler
         public static HashSet<string> hsCrawledUrls = new HashSet<string>();
         public static HashSet<string> hsNewUrls = new HashSet<string>();
         public static HashSet<string> hsCurrentlyCrawlingUrl = new HashSet<string>();
+
+        public static bool blSaveHtmlSource = false;
     }
 }

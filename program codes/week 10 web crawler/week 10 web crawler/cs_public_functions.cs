@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Controls;
@@ -19,14 +20,17 @@ namespace week_10_web_crawler
         private static readonly string srDicFilePath = "crawling_dictionary.txt";
         private static StreamWriter swLogs = new StreamWriter("logs.txt", true);
         private static StreamWriter swNewFoundUrls = new StreamWriter("new_urls_logs.txt", true);
+        private static StreamWriter swCrawledUrls = new StreamWriter("crawled_urls.txt", true);
 
         private static object _lock_swLogs = new object();
         private static object _lock_swNewFoundUrls = new object();
-
+        private static int _irThisSessionNewLinksCount = 0;
+        private static int _irThisSessionCrawledCount = 0;
         static cs_public_functions()
         {
             swLogs.AutoFlush = true;
             swNewFoundUrls.AutoFlush = true;
+            swCrawledUrls.AutoFlush = true;
         }
 
         private enum enLogType
@@ -100,6 +104,7 @@ namespace week_10_web_crawler
                 myUrl.srRootSite = srUrl.GetRootURL();
                 if (!dicCrawlingURLs.ContainsKey(myUrl.srKey))
                 {
+                    Interlocked.Increment(ref _irThisSessionNewLinksCount);
                     dicCrawlingURLs.Add(myUrl.srKey, myUrl);
                 }
             }
@@ -167,7 +172,8 @@ namespace week_10_web_crawler
             }
 
             var vrFetchResult = page_fetcher.fetch_a_page(srUrl);
-
+            lock (swCrawledUrls)
+                swCrawledUrls.WriteLine(vrFetchResult.fetchStatusCode + "\t" + DateTime.Now + "\t" + srUrl);
             if (vrFetchResult.fetchStatusCode == System.Net.HttpStatusCode.OK)
             {
                 lock (_obj_DicCrawlingUrls_lock)
@@ -175,12 +181,15 @@ namespace week_10_web_crawler
                     var vrCurrent = dicCrawlingURLs[vrUrlKey];
                     vrCurrent.blCurrentlyCrawling = false;
                     vrCurrent.dtCrawlingEnded = DateTime.Now;
-                    vrCurrent.srCrawledSource = vrFetchResult.srFetchSource;
+                    if (cs_Global_Variables.blSaveHtmlSource)
+                        vrCurrent.srCrawledSource = vrFetchResult.srFetchSource;
                     vrCurrent.blCrawled = true;
                 }
 
                 lock (hsCrawledUrls)
                     hsCrawledUrls.Add(srUrl);
+
+                Interlocked.Increment(ref _irThisSessionCrawledCount);
 
                 var vrNewUrls = returnNewUrls(vrFetchResult.srFetchSource, srUrl);
 
@@ -209,11 +218,13 @@ namespace week_10_web_crawler
                         lstNewUrls.Remove(vrUrl);
                 }
 
+
+
                 foreach (var vrNewUrl in lstNewUrls)
                 {
                     addToDictionary(vrNewUrl);
                 }
-              
+
                 if (blCrawlingStopped == false)
                     lock (hsNewUrls)
                     {
@@ -296,6 +307,29 @@ namespace week_10_web_crawler
             }
 
             return true;
+        }
+
+        public class csStatistics
+        {
+            public static int irHowManyStatistics = 6;
+            public int irCurrentlyCrawlingUrlsCount { get; set; }
+            public int irCrawlingCompletedThisSessionCount { get; set; }
+            public int irTotalCrawledUrlsCount { get; set; }
+            public int irThisSessionNewLinksCount { get; set; }
+            public int irTotalUnCrawledUrlsCount { get; set; }
+            public int irAllTimeUrlsCount { get; set; }
+        }
+
+        public static csStatistics returnStatistics()
+        {
+            csStatistics myTempStatistics = new csStatistics();
+            myTempStatistics.irCurrentlyCrawlingUrlsCount = hsCurrentlyCrawlingUrl.Count;
+            myTempStatistics.irThisSessionNewLinksCount = _irThisSessionNewLinksCount;
+            myTempStatistics.irTotalCrawledUrlsCount = hsCrawledUrls.Count;
+            myTempStatistics.irCrawlingCompletedThisSessionCount = _irThisSessionCrawledCount;
+            myTempStatistics.irTotalUnCrawledUrlsCount = hsNewUrls.Count;
+            myTempStatistics.irAllTimeUrlsCount = dicCrawlingURLs.Count;
+            return myTempStatistics;
         }
     }
 }

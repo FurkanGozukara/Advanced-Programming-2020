@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using static week_10_web_crawler.cs_public_functions;
 using static week_10_web_crawler.cs_Global_Variables;
+using System.Diagnostics;
 
 namespace week_10_web_crawler
 {
@@ -32,6 +33,13 @@ namespace week_10_web_crawler
             ThreadPool.SetMaxThreads(100000, 100000);
             ThreadPool.SetMinThreads(100000, 100000);
             cs_public_functions.refMainWindow = this;
+            for (int i = 0; i < cs_public_functions.csStatistics.irHowManyStatistics; i++)
+            {
+                lstboxStatistics.Items.Add("a statistic will be here");
+            }
+
+            if (cs_Global_Variables.blSaveHtmlSource)
+                chkBoxSaveSourceCode.IsChecked = true;
         }
 
         private void btnSingleUrlCrawl_Click(object sender, RoutedEventArgs e)
@@ -62,10 +70,45 @@ namespace week_10_web_crawler
 
         private void btnTimerStart_Click(object sender, RoutedEventArgs e)
         {
+            startTimer();
+        }
+
+        private void startTimer()
+        {
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(update_timer_label);
+            dispatcherTimer.Tick += new EventHandler(updateStatistics);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 200);
             dispatcherTimer.Start();
+        }
+
+        private void updateStatistics(object sender, EventArgs e)
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                var vrStatistics = cs_public_functions.returnStatistics();
+
+                var vrThisSessionNewLinksCount = "new links found this session: " + vrStatistics.irThisSessionNewLinksCount.ToString("N0");
+
+                var vrCrawlingCompletedThisSessionCount = "crawling completed link count this session: " + vrStatistics.irCrawlingCompletedThisSessionCount.ToString("N0");
+
+                var vrCurrentlyCrawlingUrlsCount = "currently crawling urls count: " + vrStatistics.irCurrentlyCrawlingUrlsCount.ToString("N0");
+
+                var vrTotalCrawlingCount = "all time crawling completed urls count: " + vrStatistics.irTotalCrawledUrlsCount.ToString("N0");
+
+                var vrTotalUnCrawledUrlsCount = "all time waiting to be crawling urls count: " + vrStatistics.irTotalUnCrawledUrlsCount.ToString("N0");
+
+                var vrAllTimeUrlsCount = "all time urls count: " + vrStatistics.irAllTimeUrlsCount.ToString("N0");
+
+
+                lstboxStatistics.Items[0] = vrThisSessionNewLinksCount;
+                lstboxStatistics.Items[1] = vrCrawlingCompletedThisSessionCount;
+                lstboxStatistics.Items[2] = vrCurrentlyCrawlingUrlsCount;
+                lstboxStatistics.Items[3] = vrTotalCrawlingCount;
+                lstboxStatistics.Items[4] = vrTotalUnCrawledUrlsCount;
+                lstboxStatistics.Items[5] = vrAllTimeUrlsCount;
+
+            }));
         }
 
         private void update_timer_label(object sender, EventArgs e)
@@ -112,61 +155,81 @@ namespace week_10_web_crawler
 
         private void btnStartMainCrawling_Click(object sender, RoutedEventArgs e)
         {
+            startTimer();
             cs_public_functions.loadCrawlingDictionary();
 
             dispatchherCrawling.Tick += new EventHandler(doMainCrawling);
-            dispatchherCrawling.Interval = new TimeSpan(0, 0, 0, 0, 500);
+            dispatchherCrawling.Interval = new TimeSpan(0, 0, 0, 0, cs_Global_Variables.irPerThreadStartMiliSeconds);
             dispatchherCrawling.Start();
         }
 
         private void doMainCrawling(object sender, EventArgs e)
         {
-            if (!checkCrawlingCanBeStarted())
+            for (int i = 0; i < cs_Global_Variables.irMax_Concurrent_Task_Count; i++)
             {
-                return;
-            }
 
-            string srNewUrl = null;
 
-            lock (hsNewUrls)
-            {
-                if (hsNewUrls.Count == 0)
+                Debug.WriteLine($"doMainCrawling called " + DateTime.Now.ToLocalTime() + " " + DateTime.Now.Millisecond);
+
+                if (!checkCrawlingCanBeStarted())
                 {
-                    lock (hsCurrentlyCrawlingUrl)
-                        if (hsCurrentlyCrawlingUrl.Count == 0)
-                        {
-                            dispatchherCrawling.Stop();
-                            saveCrawlingDictionary();
-                            MessageBox.Show("crawling completed");
-                            return;
-                        }
-                }
-
-                foreach (var vrNewUrl in hsNewUrls)
-                {
-                    if (hsCurrentlyCrawlingUrl.Contains(vrNewUrl))
-                        continue;
-                    srNewUrl = vrNewUrl;
-                    break;
-                }
-
-                if (string.IsNullOrEmpty(srNewUrl))
                     return;
+                }
 
-                hsNewUrls.Remove(srNewUrl);
+                string srNewUrl = null;
 
-                cs_public_functions.crawlURL(srNewUrl);
+                lock (hsNewUrls)
+                {
+                    if (hsNewUrls.Count == 0)
+                    {
+                        lock (hsCurrentlyCrawlingUrl)
+                            if (hsCurrentlyCrawlingUrl.Count == 0)
+                            {
+                                dispatchherCrawling.Stop();
+                                saveCrawlingDictionary();
+                                MessageBox.Show("crawling completed");
+                                return;
+                            }
+                    }
+
+                    foreach (var vrNewUrl in hsNewUrls)
+                    {
+                        if (hsCurrentlyCrawlingUrl.Contains(vrNewUrl))
+                            continue;
+                        srNewUrl = vrNewUrl;
+                        break;
+                    }
+
+                    if (string.IsNullOrEmpty(srNewUrl))
+                        return;
+
+                    hsNewUrls.Remove(srNewUrl);
+
+                    Task.Factory.StartNew(() =>
+                    {
+                        cs_public_functions.crawlURL(srNewUrl);
+                    });
+
+                }
             }
         }
 
         private void btnStopCrawling_Click(object sender, RoutedEventArgs e)
         {
             blCrawlingStopped = true;
-            lock(hsCrawledUrls)
+            lock (hsCrawledUrls)
             {
                 hsNewUrls = new HashSet<string>();
             }
             cs_public_functions.updateListStatusBox("software stop command is set please wait");
+        }
+
+        private void chkBoxSaveSourceCode_Click(object sender, RoutedEventArgs e)
+        {
+            if (chkBoxSaveSourceCode.IsChecked == true)
+                blSaveHtmlSource = true;
+            else
+                blSaveHtmlSource = false;
         }
     }
 }
