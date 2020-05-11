@@ -20,6 +20,8 @@
         <Button Content="stop crawling" Name="btnStopCrawling" HorizontalAlignment="Left" Margin="801,290,0,0" VerticalAlignment="Top" Width="156" Height="54" Click="btnStopCrawling_Click"/>
         <ListBox  Name="lstboxStatistics" HorizontalAlignment="Left" Height="296" Margin="10,435,0,0" VerticalAlignment="Top" Width="758"/>
         <CheckBox Name="chkBoxSaveSourceCode" Content="save html source" HorizontalAlignment="Left" Margin="623,50,0,0" VerticalAlignment="Top" Click="chkBoxSaveSourceCode_Click"/>
+        <TextBox x:Name="txtNewMaxConcurrent" HorizontalAlignment="Left" Height="23" Margin="782,387,0,0" TextWrapping="Wrap" Text="max concurrent" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnSetNewMaxCount" Content="set new max concurrent crawling" HorizontalAlignment="Left" Margin="782,420,0,0" VerticalAlignment="Top" Width="200" Click="btnSetNewMaxCount_Click"/>
 
     </Grid>
 </Window>

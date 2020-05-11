@@ -26,6 +26,9 @@ namespace week_10_web_crawler
         private static object _lock_swNewFoundUrls = new object();
         private static int _irThisSessionNewLinksCount = 0;
         private static int _irThisSessionCrawledCount = 0;
+
+        public static DateTime dtCrawlingStartDate = DateTime.Now;
+
         static cs_public_functions()
         {
             swLogs.AutoFlush = true;
@@ -157,10 +160,7 @@ namespace week_10_web_crawler
 
             addToDictionary(srUrl);
             int irRetryCount = 0;
-            lock (hsCurrentlyCrawlingUrl)
-            {
-                hsCurrentlyCrawlingUrl.Add(srUrl);
-            }
+
             var vrUrlKey = srUrl.HashURL();
             lock (_obj_DicCrawlingUrls_lock)
             {
@@ -174,6 +174,9 @@ namespace week_10_web_crawler
             var vrFetchResult = page_fetcher.fetch_a_page(srUrl);
             lock (swCrawledUrls)
                 swCrawledUrls.WriteLine(vrFetchResult.fetchStatusCode + "\t" + DateTime.Now + "\t" + srUrl);
+
+            Interlocked.Increment(ref _irThisSessionCrawledCount);
+
             if (vrFetchResult.fetchStatusCode == System.Net.HttpStatusCode.OK)
             {
                 lock (_obj_DicCrawlingUrls_lock)
@@ -188,8 +191,6 @@ namespace week_10_web_crawler
 
                 lock (hsCrawledUrls)
                     hsCrawledUrls.Add(srUrl);
-
-                Interlocked.Increment(ref _irThisSessionCrawledCount);
 
                 var vrNewUrls = returnNewUrls(vrFetchResult.srFetchSource, srUrl);
 
@@ -276,6 +277,12 @@ namespace week_10_web_crawler
           ".png",".jpg",".jpeg",".css",".js",".pdf",".docx",".doc"
         };
 
+        private static readonly List<string> lst_not_allowed_urls = new List<string>
+        {
+        "https://tr.wikipedia.org/w/index.php?title=Özel:",
+        "https://tr.wikipedia.org/wiki/Kullanıcı:"
+        };
+
         private static bool checkIfUrlToBeCrawled(string srCrawledUrl, string srNewUrl,
             bool blAllowExternalUrls = true)
         {
@@ -306,18 +313,28 @@ namespace week_10_web_crawler
                 }
             }
 
+            foreach (var vrNotAllowedUrl in lst_not_allowed_urls)
+            {
+                if (srNewUrl.Contains(vrNotAllowedUrl))
+                {
+                    writeToLogsFile($"crawling url {vrNotAllowedUrl} is not allowed url : {srNewUrl}", enLogType.ByPassedUrl);
+                    return false;
+                }
+            }
+
             return true;
         }
 
         public class csStatistics
         {
-            public static int irHowManyStatistics = 6;
+            public static int irHowManyStatistics = 7;
             public int irCurrentlyCrawlingUrlsCount { get; set; }
             public int irCrawlingCompletedThisSessionCount { get; set; }
             public int irTotalCrawledUrlsCount { get; set; }
             public int irThisSessionNewLinksCount { get; set; }
             public int irTotalUnCrawledUrlsCount { get; set; }
             public int irAllTimeUrlsCount { get; set; }
+            public int irHowManyCrawledPerMinute { get; set; }
         }
 
         public static csStatistics returnStatistics()
@@ -329,6 +346,7 @@ namespace week_10_web_crawler
             myTempStatistics.irCrawlingCompletedThisSessionCount = _irThisSessionCrawledCount;
             myTempStatistics.irTotalUnCrawledUrlsCount = hsNewUrls.Count;
             myTempStatistics.irAllTimeUrlsCount = dicCrawlingURLs.Count;
+            myTempStatistics.irHowManyCrawledPerMinute = Convert.ToInt32(_irThisSessionCrawledCount / ((DateTime.Now - dtCrawlingStartDate).TotalMinutes));
             return myTempStatistics;
         }
     }

@@ -8,8 +8,8 @@ namespace week_10_web_crawler
 {
     public static class cs_Global_Variables
     {
-        public static int irMax_Concurrent_Task_Count = 20;
-        public static int irPerThreadStartMiliSeconds = 100;
+        public static int irMax_Concurrent_Task_Count = 10;
+        public static int irPerThreadStartMiliSeconds = 1;
         public static int irMaxRetryCount = 3;
         public static int irMaxWaitHours = 24;
 

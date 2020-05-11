@@ -100,6 +100,7 @@ namespace week_10_web_crawler
 
                 var vrAllTimeUrlsCount = "all time urls count: " + vrStatistics.irAllTimeUrlsCount.ToString("N0");
 
+                var vrPerMinuteCount = "per minute urls crawling count: " + vrStatistics.irHowManyCrawledPerMinute.ToString("N0");
 
                 lstboxStatistics.Items[0] = vrThisSessionNewLinksCount;
                 lstboxStatistics.Items[1] = vrCrawlingCompletedThisSessionCount;
@@ -107,7 +108,7 @@ namespace week_10_web_crawler
                 lstboxStatistics.Items[3] = vrTotalCrawlingCount;
                 lstboxStatistics.Items[4] = vrTotalUnCrawledUrlsCount;
                 lstboxStatistics.Items[5] = vrAllTimeUrlsCount;
-
+                lstboxStatistics.Items[6] = vrPerMinuteCount;
             }));
         }
 
@@ -155,6 +156,9 @@ namespace week_10_web_crawler
 
         private void btnStartMainCrawling_Click(object sender, RoutedEventArgs e)
         {
+            txtNewMaxConcurrent.Text = cs_Global_Variables.irMax_Concurrent_Task_Count.ToString();
+            cs_public_functions.dtCrawlingStartDate = DateTime.Now;
+
             startTimer();
             cs_public_functions.loadCrawlingDictionary();
 
@@ -205,10 +209,16 @@ namespace week_10_web_crawler
 
                     hsNewUrls.Remove(srNewUrl);
 
-                    Task.Factory.StartNew(() =>
+                    lock (hsCurrentlyCrawlingUrl)
                     {
-                        cs_public_functions.crawlURL(srNewUrl);
-                    });
+                        hsCurrentlyCrawlingUrl.Add(srNewUrl);
+                        var vrTask = Task.Factory.StartNew(() =>
+                          {
+                              cs_public_functions.crawlURL(srNewUrl);
+                          });
+                        lock (lstRunningTasks)
+                            lstRunningTasks.Add(vrTask);
+                    }
 
                 }
             }
@@ -230,6 +240,14 @@ namespace week_10_web_crawler
                 blSaveHtmlSource = true;
             else
                 blSaveHtmlSource = false;
+        }
+
+        private void btnSetNewMaxCount_Click(object sender, RoutedEventArgs e)
+        {
+            int irmaxnewconcurrent = 0;
+            Int32.TryParse(txtNewMaxConcurrent.Text, out irmaxnewconcurrent);
+            if (irmaxnewconcurrent > 0)
+                cs_Global_Variables.irMax_Concurrent_Task_Count = irmaxnewconcurrent;
         }
     }
 }
